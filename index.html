@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#8DE05E">
+    <title>Giulia Castro 💚</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/giuliafotoqrcodebrlogotipo.png">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Giulia Castro">
+    <link rel="apple-touch-icon" href="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/giuliafotoqrcodebrlogotipo.png">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Giulia Castro - Modelo & Influencer | Rio de Janeiro 💚">
+    <meta name="keywords" content="Giulia Castro, Modelo, Influencer, Instagram, Rio de Janeiro">
+    
+    <!-- Google Fonts - Allura (Elegante e Cursiva) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+    
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            transition: background 0.5s ease;
+        }
+    
+        body.light-mode {
+            background: linear-gradient(135deg, #8DE05E 0%, #5FB947 50%, #3D9A2F 100%);
+        }
+    
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #000000 100%);
+        }
+    
+        .card-container {
+            background: #ffffff;
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+            transition: background 0.5s ease;
+        }
+    
+        .card-container.dark-mode {
+            background: #1a1a1a;
+        }
+    
+        @media (min-width: 431px) {
+            body {
+                padding: 10px;
+            }
+    
+            .card-container {
+                max-width: 430px;
+                height: calc(100% - 20px);
+                border-radius: 25px;
+                box-shadow: 0 25px 70px rgba(141, 224, 94, 0.5);
+            }
+    
+            .card-container.dark-mode {
+                box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+            }
+        }
+    
+        .header {
+            background: linear-gradient(135deg, #8DE05E 0%, #5FB947 100%);
+            padding: max(env(safe-area-inset-top), 30px) 25px 28px 25px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(141, 224, 94, 0.3);
+            transition: background 0.5s ease;
+        }
+    
+        .header.dark-mode {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+    
+        .lang-switcher {
+            position: absolute;
+            top: max(env(safe-area-inset-top), 12px);
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+    
+        .lang-switcher.dark-mode {
+            background: rgba(42, 42, 42, 0.95);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+        }
+    
+        .lang-switcher:active {
+            transform: scale(0.95);
+        }
+    
+        .lang-option {
+            font-size: 11px;
+            font-weight: 700;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+    
+        .lang-option.dark-mode {
+            color: #aaa;
+        }
+    
+        .lang-option.active {
+            color: #8DE05E;
+        }
+    
+        .lang-option.dark-mode.active {
+            color: #8DE05E;
+        }
+    
+        .lang-divider {
+            width: 1px;
+            height: 12px;
+            background: #ddd;
+        }
+    
+        .lang-divider.dark-mode {
+            background: #444;
+        }
+    
+        .theme-switcher {
+            position: absolute;
+            top: max(env(safe-area-inset-top), 12px);
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+    
+        .theme-switcher.dark-mode {
+            background: rgba(42, 42, 42, 0.95);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+        }
+    
+        .theme-switcher:active {
+            transform: scale(0.95);
+        }
+    
+        .theme-icon {
+            font-size: 18px;
+            color: #8DE05E;
+            transition: transform 0.3s ease;
+        }
+    
+        .theme-switcher:hover .theme-icon {
+            transform: rotate(20deg);
+        }
+    
+        .header-content {
+            text-align: center;
+            color: #ffffff;
+            padding-top: 15px;
+        }
+    
+        .header-title {
+            font-family: 'Allura', cursive;
+            font-size: 48px;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+    
+        .header-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+    
+        .header-location {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 6px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+    
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+    
+        .profile-section {
+            width: 100%;
+            height: 50vh;
+            max-height: 550px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+    
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(1.05) contrast(1.05);
+            animation: photoZoom 8s ease-in-out infinite alternate;
+        }
+    
+        @keyframes photoZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+    
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(141, 224, 94, 0.2) 100%);
+            pointer-events: none;
+        }
+    
+        .qr-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #f0fdf4 100%);
+            padding: 30px 25px max(env(safe-area-inset-bottom, 30px), 30px) 25px;
+            border-radius: 30px 30px 0 0;
+            margin-top: -25px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 -15px 40px rgba(141, 224, 94, 0.2);
+            min-height: 450px;
+            transition: background 0.5s ease;
+        }
+    
+        .qr-section.dark-mode {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.5);
+        }
+    
+        .qr-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    
+        .qr-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .qr-title {
+            font-family: 'Allura', cursive;
+            font-size: 36px;
+            color: #3D9A2F;
+            font-weight: 400;
+            margin-bottom: 8px;
+            transition: color 0.5s ease;
+        }
+    
+        .qr-title.dark-mode {
+            color: #8DE05E;
+        }
+    
+        .qr-subtitle {
+            font-size: 14px;
+            color: #8DE05E;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+    
+        .slogan {
+            font-size: 15px;
+            color: #3D9A2F;
+            font-weight: 600;
+            font-style: italic;
+            margin: 15px 0;
+            text-align: center;
+            line-height: 1.5;
+            transition: color 0.5s ease;
+        }
+    
+        .slogan.dark-mode {
+            color: #8DE05E;
+        }
+    
+        .qr-container {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 40px rgba(141, 224, 94, 0.3);
+            position: relative;
+            margin: 0 auto 25px;
+            width: 100%;
+            max-width: 280px;
+            border: 3px solid #8DE05E;
+            transition: all 0.5s ease;
+        }
+    
+        .qr-container.dark-mode {
+            background: #2a2a2a;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            border-color: #8DE05E;
+        }
+    
+        .qr-code-img {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            aspect-ratio: 1;
+            display: block;
+        }
+    
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+    
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #ffffff;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+            letter-spacing: 0.5px;
+            width: 100%;
+            max-width: 320px;
+            justify-content: center;
+        }
+    
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+    
+        .whatsapp-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+    
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+        }
+    
+        .whatsapp-btn:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+    
+        .whatsapp-icon {
+            font-size: 24px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+            animation: whatsappBounce 2s ease-in-out infinite;
+        }
+    
+        @keyframes whatsappBounce {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(-10deg) scale(1.1);
+            }
+            75% {
+                transform: rotate(10deg) scale(1.1);
+            }
+        }
+    
+        .whatsapp-btn:hover .whatsapp-icon {
+            animation: none;
+            transform: scale(1.2) rotate(15deg);
+        }
+    
+        .whatsapp-btn span {
+            position: relative;
+            z-index: 1;
+        }
+    
+        .lang-content {
+            display: none;
+        }
+    
+        .lang-content.active {
+            display: block;
+        }
+    
+        @media (max-width: 380px) {
+            .header-title {
+                font-size: 42px;
+            }
+    
+            .header-subtitle {
+                font-size: 13px;
+            }
+    
+            .header-location {
+                font-size: 12px;
+            }
+    
+            .qr-title {
+                font-size: 32px;
+            }
+    
+            .whatsapp-btn {
+                padding: 14px 28px;
+                font-size: 14px;
+            }
+        }
+    
+        @media (max-height: 700px) {
+            .profile-section {
+                height: 44vh;
+            }
+    
+            .qr-section {
+                padding: 25px 25px max(env(safe-area-inset-bottom, 25px), 25px) 25px;
+                min-height: 420px;
+            }
+    
+            .qr-code-img {
+                max-width: 190px;
+            }
+    
+            .qr-container {
+                max-width: 250px;
+            }
+        }
+    
+        @media (max-height: 640px) {
+            .profile-section {
+                height: 40vh;
+            }
+    
+            .qr-section {
+                padding: 20px 20px max(env(safe-area-inset-bottom, 20px), 20px) 20px;
+                min-height: 400px;
+            }
+    
+            .qr-header {
+                margin-bottom: 15px;
+            }
+    
+            .qr-title {
+                font-size: 32px;
+            }
+    
+            .qr-code-img {
+                max-width: 170px;
+            }
+    
+            .qr-container {
+                max-width: 230px;
+                margin-bottom: 20px;
+            }
+    
+            .whatsapp-btn {
+                padding: 14px 28px;
+            }
+    
+            .header-title {
+                font-size: 42px;
+            }
+        }
+    </style>
+
+</head>
+<body class="light-mode">
+    <div class="card-container">
+        <div class="header">
+            <div class="theme-switcher" onclick="toggleTheme()">
+                <i class="fas fa-moon theme-icon" id="theme-icon"></i>
+            </div>
+
+            <div class="lang-switcher" onclick="toggleLanguage()">
+                <span class="lang-option active" id="lang-pt">PT</span>
+                <span class="lang-divider"></span>
+                <span class="lang-option" id="lang-en">EN</span>
+                <span class="lang-divider"></span>
+                <span class="lang-option" id="lang-es">ES</span>
+            </div>
+    
+            <div class="header-content">
+                <h1 class="header-title">Giulia Castro</h1>
+                <p class="header-subtitle">
+                    <span class="lang-content active" data-lang="pt">Modelo & Influencer</span>
+                    <span class="lang-content" data-lang="en">Model & Influencer</span>
+                    <span class="lang-content" data-lang="es">Modelo & Influencer</span>
+                </p>
+                <p class="header-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="lang-content active" data-lang="pt">Rio de Janeiro, Brasil</span>
+                    <span class="lang-content" data-lang="en">Rio de Janeiro, Brazil</span>
+                    <span class="lang-content" data-lang="es">Río de Janeiro, Brasil</span>
+                </p>
+            </div>
+        </div>
+    
+        <div class="main-content">
+            <div class="profile-section">
+                <img src="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/giuliainstagram1.png" alt="Giulia Castro" class="profile-image">
+                <div class="photo-overlay"></div>
+            </div>
+    
+            <div class="qr-section">
+                <div class="qr-content">
+                    <div class="qr-header">
+                        <div class="qr-title">
+                            <span class="lang-content active" data-lang="pt">Salve Meu Contato</span>
+                            <span class="lang-content" data-lang="en">Save My Contact</span>
+                            <span class="lang-content" data-lang="es">Guarda Mi Contacto</span>
+                        </div>
+                        <div class="qr-subtitle">
+                            <span class="lang-content active" data-lang="pt">Escaneie para se conectar</span>
+                            <span class="lang-content" data-lang="en">Scan to connect</span>
+                            <span class="lang-content" data-lang="es">Escanea para conectar</span>
+                        </div>
+                    </div>
+    
+                    <div class="slogan">
+                        <span class="lang-content active" data-lang="pt">✨ Onde estilo encontra autenticidade ✨</span>
+                        <span class="lang-content" data-lang="en">✨ Where style meets authenticity ✨</span>
+                        <span class="lang-content" data-lang="es">✨ Donde el estilo encuentra autenticidad ✨</span>
+                    </div>
+    
+                    <div class="qr-container">
+                        <img src="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/qrcodeinstagramgiuliapr.png" alt="QR Code Giulia Castro" class="qr-code-img">
+                    </div>
+                </div>
+    
+                <div class="contact-buttons">
+                    <a href="https://wa.me/5521972675983" class="whatsapp-btn" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp whatsapp-icon"></i>
+                        <span>
+                            <span class="lang-content active" data-lang="pt">Chamar no WhatsApp</span>
+                            <span class="lang-content" data-lang="en">Chat on WhatsApp</span>
+                            <span class="lang-content" data-lang="es">Chatear en WhatsApp</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentLang = 'pt';
+        let isDarkMode = false;
+    
+        function toggleLanguage() {
+            const langs = ['pt', 'en', 'es'];
+            const currentIndex = langs.indexOf(currentLang);
+            currentLang = langs[(currentIndex + 1) % 3];
+    
+            langs.forEach(lang => {
+                const option = document.getElementById(`lang-${lang}`);
+                if (option) {
+                    option.classList.toggle('active', lang === currentLang);
+                }
+            });
+    
+            document.querySelectorAll('.lang-content').forEach(element => {
+                if (element.getAttribute('data-lang') === currentLang) {
+                    element.classList.add('active');
+                } else {
+                    element.classList.remove('active');
+                }
+            });
+        }
+    
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const container = document.querySelector('.card-container');
+            const header = document.querySelector('.header');
+            const qrSection = document.querySelector('.qr-section');
+            const qrTitle = document.querySelector('.qr-title');
+            const slogan = document.querySelector('.slogan');
+            const qrContainer = document.querySelector('.qr-container');
+            const langSwitcher = document.querySelector('.lang-switcher');
+            const themeSwitcher = document.querySelector('.theme-switcher');
+            const themeIcon = document.getElementById('theme-icon');
+            const langOptions = document.querySelectorAll('.lang-option');
+            const langDividers = document.querySelectorAll('.lang-divider');
+    
+            if (isDarkMode) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                container.classList.add('dark-mode');
+                header.classList.add('dark-mode');
+                qrSection.classList.add('dark-mode');
+                qrTitle.classList.add('dark-mode');
+                slogan.classList.add('dark-mode');
+                qrContainer.classList.add('dark-mode');
+                langSwitcher.classList.add('dark-mode');
+                themeSwitcher.classList.add('dark-mode');
+                langOptions.forEach(opt => opt.classList.add('dark-mode'));
+                langDividers.forEach(div => div.classList.add('dark-mode'));
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                container.classList.remove('dark-mode');
+                header.classList.remove('dark-mode');
+                qrSection.classList.remove('dark-mode');
+                qrTitle.classList.remove('dark-mode');
+                slogan.classList.remove('dark-mode');
+                qrContainer.classList.remove('dark-mode');
+                langSwitcher.classList.remove('dark-mode');
+                themeSwitcher.classList.remove('dark-mode');
+                langOptions.forEach(opt => opt.classList.remove('dark-mode'));
+                langDividers.forEach(div => div.classList.remove('dark-mode'));
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+    
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Erro ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>
